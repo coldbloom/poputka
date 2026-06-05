@@ -1,0 +1,156 @@
+@use '@/utils/variables' as variables;
+
+.wrapper {
+  margin-top: variables.$header-height;
+  padding: 0 24px;
+
+  .titleWrapper {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    h1 {
+      font-size: 16px;
+      font-weight: 500;
+      color: variables.$color-theme-one;
+      margin: 0;
+    }
+  }
+}
+
+//@fixme нужно будет сделать layout
+//.modalWrapper {
+//  width: 100%;
+//  height: 100%;
+//
+//  background-color: white;
+//  padding: 0 24px;
+//
+//  h1 {
+//    font-size: 30px;
+//    color: variables.$color-theme-one;
+//  }
+//
+//  .inputBtn {
+//    display: flex;
+//    flex-direction: column;
+//    margin-bottom: 30px;
+//    gap: 4px;
+//
+//    span:first-of-type {
+//      color: variables.$text-light-grey;
+//    }
+//
+//    span:last-of-type {
+//      color: variables.$main-color;
+//      font-weight: 600;
+//    }
+//
+//    &:active {
+//      background-color: variables.$color-disabled;
+//    }
+//  }
+//}
+//
+//.closeBtn {
+//  margin-top: 20px;
+//  height: 36px;
+//
+//  &:active {
+//    transform: scale(0.970); //@fixme значение
+//  }
+//
+//  svg {
+//    color: variables.$main-color;
+//    float: right;
+//  }
+//}
+//
+////проверить классы в этом файле
+//.submitButton {
+//  background-color: variables.$main-color;
+//  border: none;
+//  border-radius: variables.$rounded;
+//  height: 56px;
+//  padding: 16px;
+//  font-size: 16px;
+//  width: 100%;
+//
+//  &:active {
+//    transform: scale(0.990);
+//  }
+//}
+//
+//// вынести в EditAvatarModal.module.scss
+//.editAvatarWrapper {
+//  display: flex;
+//  flex-direction: column;
+//
+//  .hiddenInput {
+//    display: none;
+//  }
+//
+//  .customButton {
+//    display: flex;
+//    border: 2px solid variables.$main-color;
+//    border-radius: variables.$rounded;
+//    height: 56px;
+//    font-size: 16px;
+//    width: 100%;
+//    justify-content: center;
+//    align-items: center;
+//    gap: 4px;
+//
+//    &:active {
+//      transform: scale(0.990);
+//    }
+//  }
+//}
+//
+//.trimEditAvatar {
+//  position: absolute;
+//  left: 0;
+//  z-index: 100;
+//  background-color: white;
+//  padding-top: 20px;
+//}
+//
+//.avatarPreview {
+//  border-radius: 50%;
+//  outline: 3px solid variables.$color-base-grey-A20;
+//}
+//
+//.avatarWrapper {
+//  display: flex;
+//  justify-content: center;
+//  padding-bottom: 20px;
+//}
+//
+//.noPhotoWrapper {
+//  display: flex;
+//  align-items: center;
+//  gap: 4px;
+//  font-size: 18px;
+//
+//  .circle {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    border: 3px solid variables.$color-base-grey-A20;
+//    border-radius: 50%;
+//
+//    svg {
+//      color: variables.$color-base-grey-40;
+//    }
+//
+//    span {
+//      color: variables.$text-light-grey;
+//      margin-left: 4px;
+//    }
+//
+//    &:active {
+//      transform: scale(0.990);
+//    }
+//  }
+//}

@@ -1,0 +1,46 @@
+@use '@/utils/variables' as variables;
+
+.header {
+  width: 100%;
+  height: variables.$header-height;
+  background-color: white;
+  color: variables.$color-theme-one;
+
+  position: fixed;
+  top: 0;
+  z-index: variables.$z-index-header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 16px;
+
+  box-shadow: 0 2px 4px hsla(218, 6%, 73%, .48);
+
+  .logoWrapper {
+    height: 100%;
+    font-size: 17px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+
+    text-align: center;
+
+    .iconWrapper {
+      width: 40px;
+      height: 100%;
+      position: relative;
+
+      svg {
+        position: absolute;
+        top: 12px;
+        left: 0;
+      }
+    }
+  }
+
+  .iconButton {
+    color: variables.$color-theme-third;
+  }
+}

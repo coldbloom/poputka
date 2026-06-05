@@ -1,0 +1,82 @@
+@use '@/utils/variables' as variables;
+
+.inputWrapper {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: end;
+}
+
+.inputPrice {
+  max-width: 120px;
+  input {
+    text-align: right;
+  }
+}
+
+.pr {
+  input {
+    padding-right: 44px;
+  }
+}
+
+.contentWrapper {
+  margin-top: 10px;
+  min-height: 82px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .currencyWrapper {
+    position: relative;
+    display: flex;
+
+    .empty {
+      width: 18px;
+    }
+
+    .currency {
+      width: 18px;
+      text-align: right;
+      position: absolute;
+      top: 15px;
+      right: 0;
+    }
+  }
+}
+
+.label {
+  margin-top: 10px;
+
+  &.first {
+    margin-top: 0;
+  }
+
+  &.error {
+    margin-top: 0;
+  }
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.bottomWrapper {
+  display: flex;
+  flex-direction: column;
+
+  .infoWrapper {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    gap: 8px;
+    color: variables.$color-theme-five;
+
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+}

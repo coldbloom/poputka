@@ -1,0 +1,30 @@
+.separator {
+  max-width: 300px; // @fixme это нужно будет изменить когда будем делать дестоп и адаптив
+  width: 100%;
+  margin: 12px 0 18px;
+  padding-top: 6px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+
+  &:before {
+    background-color: #e0e3eb;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 15px;
+  }
+
+  .text {
+    background-color: #fff;
+    border-radius: 50%;
+    color: #6a6d78;
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+    font-size: 14px;
+  }
+}

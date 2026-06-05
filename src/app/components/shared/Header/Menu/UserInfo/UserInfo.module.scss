@@ -1,0 +1,27 @@
+@use '@/utils/variables' as variables;
+
+.userInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  gap: 8px;
+
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    //32px (отступы 16 * 2), 36px - avatar, 8px - gap
+    max-width: calc(80vw - 32px - 36px - 8px);
+
+    span:first-of-type {
+      color: variables.$color-theme-one;
+    }
+
+    span:last-of-type {
+      color: variables.$text-light-grey;
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

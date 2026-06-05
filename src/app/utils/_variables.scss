@@ -1,0 +1,50 @@
+$background: #ffffff;
+$main-text: #000000;
+
+// z-index styles
+$z-index-header: 10;
+$z-index-fixed: 30;
+$z-index-modal-page-backdrop: 40;
+$z-index-modal-page: 45;
+
+// варианты для main color:
+// hsla(197, 100%, 48%, 1) input outline color
+//$main-color: rgb(0, 175, 245); // bla-bla-car color
+//$main-color: #FFBD75;
+$text-light-grey: #6C737D;
+$text-secondary: #6F8B90;
+$text-primary: #054562;
+$text-input: #054652;
+$placeholder-color: #708b90;
+$color-disabled-lighter: #EBEBE4; /* Lighter gray */
+$color-disabled: #d3d3d3; /* Light gray */
+$error-color: #f44336;
+
+$main-color: #3B945E;
+$color-theme-one: #182628;
+$color-theme-two: #65CCB8; //bg-color // использовал для outline input
+$color-theme-third: #57BA93;
+$color-theme-five: #B2B2B2;
+
+$picker-bg-color: hsla(0, 0%, 93%, 1);
+
+$color-base-grey-A20: rgba(26, 54, 101, 0.13);
+$color-base-grey-40: #b4bbc6;
+
+$rounded: 12px;
+$rounded-min: 6px;
+
+
+
+
+
+
+// sizes
+$header-height: 56px;
+$scale-value: 0.990;
+
+// embla
+$--text-high-contrast-rgb-value: rgb(49, 49, 49);
+$--background-site-rgb-value: rgb(49, 49, 49);
+
+

@@ -1,0 +1,31 @@
+@use '@/utils/variables' as variables;
+
+/* Стили для ползунка */
+.range {
+  margin-top: 20px;
+  -webkit-appearance: none; /* Убираем стандартный стиль для WebKit-браузеров */
+  width: 100%; /* Ширина ползунка */
+  background: variables.$color-theme-five; /* Цвет фона ползунка */
+  height: 10px; /* Высота ползунка */
+  border-radius: 5px; /* Скругление углов */
+}
+
+/* Стили для круглого ползунка */
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Убираем стандартный стиль для WebKit-браузеров */
+  appearance: none; /* Убираем стандартный стиль для других браузеров */
+  width: 28px; /* Ширина ползунка */
+  height: 28px; /* Высота ползунка */
+  border-radius: 50%; /* Круглая форма */
+  background: variables.$color-theme-third; /* Цвет ползунка */
+  cursor: pointer; /* Курсор при наведении */
+}
+
+/* Стили для ползунка в Firefox */
+.range::-moz-range-thumb {
+  width: 20px; /* Ширина ползунка */
+  height: 20px; /* Высота ползунка */
+  border-radius: 50%; /* Круглая форма */
+  background: variables.$color-theme-third; /* Цвет ползунка */
+  cursor: pointer; /* Курсор при наведении */
+}

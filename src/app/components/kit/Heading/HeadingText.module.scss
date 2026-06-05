@@ -1,0 +1,12 @@
+@use '@/utils/variables' as variables;
+
+.headingText {
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  margin: 16px 0;
+
+  &.dark {
+    color: variables.$color-theme-one;
+  }
+}

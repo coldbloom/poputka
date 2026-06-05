@@ -1,0 +1,16 @@
+@use '@/utils/variables' as variables;
+
+.footer {
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  border-top: 0.5px solid rgba(22, 24, 35, 0.12);
+  background-color: rgba(22, 24, 35, 0.03);
+  color: variables.$color-theme-one;
+
+  .link {
+    color: variables.$main-color;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

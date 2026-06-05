@@ -1,0 +1,16 @@
+@use '@/utils/variables' as variables;
+
+.wrapper {
+  padding: 24px 24px 48px 24px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    color: variables.$color-theme-one;
+    margin: 0;
+  }
+}

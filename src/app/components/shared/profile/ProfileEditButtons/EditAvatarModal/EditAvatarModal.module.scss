@@ -1,0 +1,26 @@
+@use '@/utils/variables' as variables;
+
+.editAvatarWrapper {
+  display: flex;
+  flex-direction: column;
+
+  .hiddenInput {
+    display: none;
+  }
+
+  .customButton {
+    display: flex;
+    border: 2px solid variables.$main-color;
+    border-radius: variables.$rounded;
+    height: 56px;
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    &:active {
+      transform: scale(0.990);
+    }
+  }
+}

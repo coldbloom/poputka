@@ -1,0 +1,32 @@
+@use '@/utils/variables' as variables;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .time {
+    font-size: 18px;
+    font-weight: bold;
+    color: variables.$color-theme-one;
+  }
+
+  .street {
+    font-size: 14px;
+    color: variables.$text-secondary;
+  }
+
+  &.departure {
+    text-align: start;
+  }
+
+  &.arrival {
+    text-align: end;
+
+    .labelWrapper {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@use 'sass:map';
+@use '@/utils/colors-additional' as colorsAdditional;
+
+$sizeS: 28px;
+$sizeM: 36px;
+$sizeL: 44px;
+$sizeXXL: 88px;
+$sizeXXXL: 132px;
+
+$font-size-sm: 12px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+$font-size-2xl: 28px;
+$font-size-3xl: 36px;
+
+$font-weight-medium: 400;
+$font-weight-bold: 500;
+
+$line-height-sm: 16px;
+$line-height-md: 20px;
+$line-height-xl: 36px;
+$line-height-2xl: 44px;
+
+$textColors: (
+        purple: colorsAdditional.$color-additional-violet-100,
+        teal: colorsAdditional.$color-additional-cyan-100,
+        indigo: colorsAdditional.$color-additional-indigo-100,
+        green: colorsAdditional.$color-additional-green-100,
+        pink: colorsAdditional.$color-additional-pink-100,
+        orange: colorsAdditional.$color-additional-orange-100,
+        brown: colorsAdditional.$color-additional-brown-100,
+        bluegray: colorsAdditional.$color-additional-blue-grey-100,
+);
+
+@each $textColor, $value in $textColors {
+  .#{'' + $textColor} {
+    color: $value;
+  }
+}
+
+$colors: (
+        purple: colorsAdditional.$color-additional-violet-20,
+        teal: colorsAdditional.$color-additional-cyan-20,
+        indigo: colorsAdditional.$color-additional-indigo-20,
+        green: colorsAdditional.$color-additional-green-20,
+        pink: colorsAdditional.$color-additional-pink-20,
+        orange: colorsAdditional.$color-additional-orange-20,
+        brown: colorsAdditional.$color-additional-brown-20,
+        bluegray: colorsAdditional.$color-additional-blue-grey-20,
+);
+
+@each $color, $value in $colors {
+  .#{'' + $color} {
+    background-color: $value;
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: map.get($colors, 'purple');
+  border-radius: 50%;
+  color: map.get($textColors, 'purple');
+  font-weight: 500;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.s {
+  width: $sizeS;
+  height: $sizeS;
+  min-width: $sizeS;
+  min-height: $sizeS;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-sm;
+  letter-spacing: 0.08px;
+}
+
+.m {
+  width: $sizeM;
+  height: $sizeM;
+  min-width: $sizeM;
+  min-height: $sizeM;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-md;
+  line-height: $line-height-sm;
+  letter-spacing: 0.08px;
+}
+
+.l {
+  width: $sizeL;
+  height: $sizeL;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  line-height: $line-height-md;
+  letter-spacing: 0.12px;
+}
+
+.xxl {
+  width: $sizeXXL;
+  height: $sizeXXL;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-2xl;
+  line-height: $line-height-xl;
+}
+
+.xxxl {
+  width: $sizeXXXL;
+  height: $sizeXXXL;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-3xl;
+  line-height: $line-height-2xl;
+  letter-spacing: -0.2px;
+}
+
+.disabled {
+  background-color: #e1e5eb;
+  color: white;
+}

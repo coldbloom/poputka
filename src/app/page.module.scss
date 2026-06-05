@@ -1,0 +1,28 @@
+@use '@/utils/variables' as variables;
+
+.mainWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .backgroundColorWrapper {
+    position: absolute;
+    top: -56px;
+    background-color: variables.$main-color;
+    width: 100%;
+    height: calc(100% - 61px);
+  }
+
+  .heading {
+    z-index: 2;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .paddingWrapper {
+    z-index: 2;
+    padding: 0 24px;
+    width: 100%;
+  }
+}

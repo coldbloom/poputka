@@ -1,0 +1,50 @@
+@use '@/utils/variables' as variables;
+
+.wrapper {
+  .textArea {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: variables.$rounded;
+    min-height: 40px; // Минимальная высота
+    resize: none; // Отключаем ручное изменение размера
+    overflow: hidden; // Скрываем полосу прокрутки
+    transition: height 0.2s ease; // Плавное изменение высоты
+
+    outline: none;
+    border: 1px solid #d1d4dc;
+    background-color: white;
+    color: variables.$color-theme-one;
+
+    &:focus-within {
+      outline: 2px solid variables.$main-color; // Изменяем границу при фокусе на вложенном input
+      border: 1px solid transparent;
+    }
+
+    &.error {
+      outline: 2px solid variables.$error-color;
+      border: 1px solid transparent;
+    }
+
+    &.autoSize {
+      resize: none; // Отключаем ручное изменение размера для режима auto
+    }
+
+    // Если нужно разрешить ручное изменение размера в режиме fixed
+    &:not(.autoSize) {
+      resize: vertical;
+    }
+
+    &::placeholder {
+      color: variables.$color-theme-five;
+    }
+  }
+
+  .errorMessage {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1.2;
+    color: variables.$error-color;
+    margin-top: 4px;
+  }
+}

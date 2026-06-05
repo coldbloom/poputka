@@ -1,0 +1,14 @@
+@use '@/utils/variables' as variables;
+
+.container {
+  padding: 0 24px;
+  width: 100%;
+  height: 100dvh;
+  z-index: variables.$z-index-fixed;
+  position: fixed;
+  background-color: whitesmoke;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

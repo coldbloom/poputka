@@ -1,0 +1,41 @@
+@use '@/utils/variables' as variables;
+
+.avatarPreview {
+  border-radius: 50%;
+  outline: 3px solid variables.$color-base-grey-A20;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+//@FIXME вынести noPhotoWrapper в отдельный файл
+.noPhotoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid variables.$color-base-grey-A20;
+    border-radius: 50%;
+
+    svg {
+      color: variables.$color-base-grey-40;
+    }
+
+    span {
+      color: variables.$text-light-grey;
+      margin-left: 4px;
+    }
+
+    &:active {
+      transform: scale(0.990);
+    }
+  }
+}

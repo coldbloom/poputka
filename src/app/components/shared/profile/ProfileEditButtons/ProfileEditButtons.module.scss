@@ -1,0 +1,15 @@
+@use '@/utils/variables' as variables;
+
+.btnWrapper {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  color: variables.$main-color;
+
+  &:active {
+    transform: scale(variables.$scale-value);
+  }
+}

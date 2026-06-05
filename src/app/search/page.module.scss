@@ -1,0 +1,25 @@
+@use '@/utils/variables' as variables;
+
+.tripsWrapper {
+  background-color: whitesmoke;
+  min-height: calc(100vh - 56px);
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .date {
+    font-weight: bold;
+    color: variables.$color-theme-one;
+  }
+
+  .direction {
+    color: variables.$color-theme-one;
+  }
+
+  .tripsCount {
+    padding-top: 16px;
+    color: variables.$text-light-grey;
+  }
+}

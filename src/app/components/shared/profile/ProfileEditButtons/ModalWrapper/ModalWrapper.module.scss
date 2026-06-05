@@ -1,0 +1,23 @@
+@use '@/utils/variables' as variables;
+
+.modalWrapper {
+  width: 100%;
+  height: 100%;
+
+  background-color: white;
+  padding: 0 24px;
+
+  .closeBtn {
+    margin-top: 20px;
+    height: 36px;
+
+    &:active {
+      transform: scale(0.970); //@fixme значение
+    }
+
+    svg {
+      color: variables.$main-color;
+      float: right;
+    }
+  }
+}

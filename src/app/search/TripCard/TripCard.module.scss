@@ -1,0 +1,49 @@
+@use '@/utils/variables' as variables;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: white;
+  box-shadow: 0 1px 8px 0 hsla(0, 0%, 0%, 0.16);
+  border-radius: variables.$rounded;
+  padding: 16px;
+  position: relative;
+
+  .infoWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 30px;
+
+    // Ограничиваем каждый дочерний элемент
+    > * {
+      flex: 1;
+      //max-width: 50%;
+      min-width: 0; // Важно для text-overflow
+    }
+
+    .dottedLine {
+      position: absolute;
+      border-bottom: 2px dotted variables.$color-base-grey-40;
+      width: calc(100% - 47px - 47px - 32px - 13px);
+      top: 58px;
+      left: 70px;
+      overflow: hidden;
+    }
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eff1f5;
+    padding: 12px;
+    border-radius: variables.$rounded;
+
+    .price {
+      font-size: 18px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@use '@/utils/variables' as variables;
+
+.headerWrapper {
+  width: 100%;
+  height: variables.$header-height;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 12px;
+
+  &.spaceBetween {
+    justify-content: space-between;
+  }
+
+  .closeBtn {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: variables.$color-theme-one;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}

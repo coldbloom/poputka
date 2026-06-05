@@ -1,0 +1,31 @@
+@use '@/utils/variables' as variables;
+
+.modalWrapper {
+  height: 100%;
+  background-color: whitesmoke;
+  top: variables.$header-height;
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid variables.$color-disabled;
+
+  .loginButton {
+    margin-top: 40px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 10px 20px;
+
+    span {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+
+  .tabsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 16px 0;
+  }
+}

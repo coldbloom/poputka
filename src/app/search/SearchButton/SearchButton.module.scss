@@ -1,0 +1,15 @@
+@use '@/utils/variables' as variables;
+
+.wrapper {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  background-color: hsla(0, 0%, 93%, 1); //@fixme color
+  //border: 1px solid variables.$text-light-grey;
+  border-radius: variables.$rounded;
+}
+
+.modalWrapper {
+  height: 500px;
+  background-color: whitesmoke;
+}

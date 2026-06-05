@@ -1,0 +1,11 @@
+@use '@/utils/variables' as variables;
+
+.goBackWrapper {
+  margin-top: 20px;
+  height: 36px;
+  width: fit-content;
+
+  svg {
+    color: variables.$main-color;
+  }
+}

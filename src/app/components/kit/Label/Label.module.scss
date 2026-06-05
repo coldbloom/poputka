@@ -1,0 +1,115 @@
+@use 'sass:list';
+
+.label {
+  border-radius: 4px;
+
+  line-height: 16px;
+  letter-spacing: 0.08px;
+
+  width: fit-content;
+  cursor: default;
+  .content {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+  .withIcon {
+    display: inline-block;
+    margin-left: 18px;
+  }
+
+  &.m {
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &.s {
+    padding: 2px 6px;
+    font-size: 14px;
+  }
+
+  &.xs {
+    padding: 1px 6px;
+    font-size: 12px;
+  }
+}
+
+$defs: (
+        blue: (
+                #e3f2fd,
+                #93cdfc,
+                #1976d2,
+                #1565c0,
+        ),
+        grey: (
+                #eff1f5,
+                #cfd4dc,
+                #3b4047,
+                #2a2e33,
+        ),
+        red: (
+                #ffebed,
+                #ffa59e,
+                #d82a13,
+                #c8250f,
+        ),
+        green: (
+                #e7fbe0,
+                #a8db97,
+                #3b961d,
+                #2b800e,
+        ),
+        violet: (
+                #efeafe,
+                #bba0f5,
+                #6c20cf,
+                #5e08ba,
+        ),
+        cyan: (
+                #dbf8fa,
+                #81d5db,
+                #00858f,
+                #01757e,
+        ),
+        alert: (
+                #ffffff,
+                #ffd2d2,
+                #d82a13,
+                transparent,
+        ),
+);
+
+@each $name, $colors in $defs {
+  .#{'' + $name}.light {
+    background-color: nth($colors, 1);
+    color: nth($colors, 4);
+
+    &.disabled {
+      color: nth($colors, 2);
+    }
+  }
+  .#{'' + $name}.heavy {
+    background-color: nth($colors, 3);
+    color: nth($colors, 1);
+
+    &.disabled {
+      background-color: nth($colors, 2);
+    }
+  }
+  .#{'' + $name}.alert {
+    background-color: nth($colors, 3);
+    color: nth($colors, 1);
+
+    &.disabled {
+      background-color: nth($colors, 2);
+    }
+  }
+}
