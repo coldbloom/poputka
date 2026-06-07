@@ -89,27 +89,27 @@ $defs: (
 
 @each $name, $colors in $defs {
   .#{'' + $name}.light {
-    background-color: nth($colors, 1);
-    color: nth($colors, 4);
+    background-color: list.nth($colors, 1);
+    color: list.nth($colors, 4);
 
     &.disabled {
-      color: nth($colors, 2);
+      color: list.nth($colors, 2);
     }
   }
   .#{'' + $name}.heavy {
-    background-color: nth($colors, 3);
-    color: nth($colors, 1);
+    background-color: list.nth($colors, 3);
+    color: list.nth($colors, 1);
 
     &.disabled {
-      background-color: nth($colors, 2);
+      background-color: list.nth($colors, 2);
     }
   }
   .#{'' + $name}.alert {
-    background-color: nth($colors, 3);
-    color: nth($colors, 1);
+    background-color: list.nth($colors, 3);
+    color: list.nth($colors, 1);
 
     &.disabled {
-      background-color: nth($colors, 2);
+      background-color: list.nth($colors, 2);
     }
   }
 }

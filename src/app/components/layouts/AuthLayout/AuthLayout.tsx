@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 
 import { Heading } from "@/components/kit/Heading/Heading";
+import { GoogleOAuthProviderWrapper } from '@/components/shared/auth/GoogleOAuthProviderWrapper';
 import { AuthHeader } from './AuthHeader';
 import { AuthFooter } from './AuthFooter';
 
@@ -24,7 +25,7 @@ export const AuthLayout: FC<AuthLayoutProps> = ({ children, className, title, de
           <Heading variant="dark">{title}</Heading>
           <p>{description}</p>
           <div className={s.childrenWrapper}>
-            {children}
+            <GoogleOAuthProviderWrapper>{children}</GoogleOAuthProviderWrapper>
           </div>
         </div>
 

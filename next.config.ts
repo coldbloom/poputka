@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   // reactStrictMode: false,
   /* config options here */
   images: {
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
         protocol: 'http',

@@ -4,9 +4,9 @@ import s from './page.module.scss';
 export default async function TripPage({
   params,
 }: {
-  params: { id?: string };
+  params: Promise<{ id?: string }>;
 }) {
-  const { id } = params;
+  const { id } = await params;
 
   const url = `${process.env.NEXT_PUBLIC_API_URL}/trip/${id}`;
   const response = await fetch(url);

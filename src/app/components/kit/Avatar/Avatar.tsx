@@ -34,7 +34,7 @@ export const Avatar = forwardRef<HTMLDivElement, PropsWithChildren<AvatarBasePro
     return (
       <div ref={ref} className={classNames(s.avatar, s[size], s[color], { [s.disabled]: disabled }, className)} style={style}>
         {url ? (
-          <Image src={url} layout="fill" alt="аватвр" />
+          <Image src={url} fill alt="аватар" />
         ) : initials}
       </div>
     );

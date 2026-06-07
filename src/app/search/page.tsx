@@ -4,13 +4,21 @@ import { formatDate, getTripString } from '@/utils/functions';
 
 import s from './page.module.scss';
 
+type SearchParams = {
+  from?: string;
+  to?: string;
+  date?: string;
+  passengers?: string;
+  fromCity?: string;
+  toCity?: string;
+};
+
 export default async function SearchPage({
- searchParams,
+  searchParams,
 }: {
-  searchParams: { from?: string; to?: string; date?: string; passengers?: string; fromCity?: string; toCity?: string; };
+  searchParams: Promise<SearchParams>;
 }) {
-  // Извлекаем параметры из URL
-  const { from, to, date, passengers = '1', fromCity, toCity } = searchParams;
+  const { from, to, date, passengers = '1', fromCity, toCity } = await searchParams;
   console.log('from = ', from);
   console.log('to = ', to);
   console.log('date = ', date);

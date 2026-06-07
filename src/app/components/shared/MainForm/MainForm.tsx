@@ -33,9 +33,15 @@ export const MainForm = () => {
   const closeModal = (num?: number) => setActiveField(num ?? null);
 
   const handleLocation = (value: Location, fieldName: LocationField) => {
-    //обновляем историю поиска
     updateSearchCitiesHistory(value);
     updateLocation(fieldName as CitiesField, value);
+
+    if (fieldName === 'cityFrom') {
+      setErrorFrom(false);
+    } else if (fieldName === 'cityTo') {
+      setErrorTo(false);
+    }
+
     closeModal();
   }
 

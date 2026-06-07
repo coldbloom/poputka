@@ -15,7 +15,7 @@ export default function Home() {
         <div className={s.mainWrapper}>
           <div className={s.backgroundColorWrapper} />
           <Heading className={s.heading}>Сервис поиска автомобильных попутчиков без комиссии!</Heading>
-          <div className={s.paddingWrapper}>
+          <div className={s.mainFormWrapper}>
             <MainForm />
           </div>
         </div>
