@@ -1,0 +1,95 @@
+@use '@/utils/variables' as v;
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #fff;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+  overflow: visible;
+
+  &:active {
+    transform: scale(0.975);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.badge {
+  position: absolute;
+  top: -9px;
+  right: 14px;
+  height: 18px;
+  padding: 0 8px;
+  background-color: v.$color-theme-two;
+  color: v.$color-theme-one;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border-radius: 9px 9px 9px 2px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Provider-specific styles */
+.telegram {
+  background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
+  box-shadow: 0 4px 16px rgba(42, 171, 238, 0.35);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+    box-shadow: 0 6px 20px rgba(42, 171, 238, 0.45);
+  }
+}
+
+.vk {
+  background: linear-gradient(135deg, #0077FF 0%, #005FCC 100%);
+  box-shadow: 0 4px 16px rgba(0, 119, 255, 0.35);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+    box-shadow: 0 6px 20px rgba(0, 119, 255, 0.45);
+  }
+}
+
+.yandex {
+  background: linear-gradient(135deg, #FC3F1D 0%, #E0330F 100%);
+  box-shadow: 0 4px 16px rgba(252, 63, 29, 0.35);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+    box-shadow: 0 6px 20px rgba(252, 63, 29, 0.45);
+  }
+}
+
+.mailru {
+  background: linear-gradient(135deg, #005FF9 0%, #0040D0 100%);
+  box-shadow: 0 4px 16px rgba(0, 95, 249, 0.35);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+    box-shadow: 0 6px 20px rgba(0, 95, 249, 0.45);
+  }
+}
