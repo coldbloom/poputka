@@ -1,0 +1,18 @@
+@use '@/utils/variables' as v;
+
+.legal {
+  font-size: 12px;
+  color: v.$text-secondary;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.legalLink {
+  color: v.$main-color;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

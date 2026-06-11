@@ -1,39 +1,46 @@
 'use client'
 
 import { useEffect } from 'react';
-import { instanceAxios } from "@/utils/services/apiClient";
-import inMemoryJWT from "@/utils/services/inMemoryJWT";
-import { useAuthStore, useUserInfoStore } from '@/store';
+import { useAuthStore, AuthUser } from '@/store/authStore';
+import inMemoryJWT from '@/utils/services/inMemoryJWT';
 
 type AuthStoreInitializerProps = {
-
+  /** Пользователь, полученный на сервере через getSession() в root layout */
+  initialUser: AuthUser | null;
 };
 
-export const AuthStoreInitializer = ({  }: AuthStoreInitializerProps) => {
-  const { setUserInfo, userInfo } = useUserInfoStore();
+/**
+ * Клиентский компонент, инициализирующий auth-состояние на основе SSR-данных.
+ * - На старте: записывает initialUser в Zustand (без лишнего запроса к API)
+ * - Затем делает refresh для получения access-токена в память
+ */
+export const AuthStoreInitializer = ({ initialUser }: AuthStoreInitializerProps) => {
+  const { init, refreshTokens } = useAuthStore();
 
-  console.log(userInfo, ' userInfo')
+  // Синхронная инициализация — до любого useEffect
+  // (Zustand.init вызывается во время рендера, это намеренно)
+  if (useAuthStore.getState().isAuth === null) {
+    init(initialUser);
+  }
 
   useEffect(() => {
+    if (!initialUser) return;
 
-    //@Fixme убрать консоль
-    console.log(' запрос на рефреш с клиента');
+    // Пользователь найден на сервере — получаем access-токен для клиентских запросов
+    refreshTokens();
+  }, []);
 
-    const refreshAuth = async () => {
-      try {
-        const res = await instanceAxios.post('auth/refresh');
-        const { accessToken, accessTokenExpiration, userInfo } = res.data;
-
-        inMemoryJWT.setToken(accessToken, accessTokenExpiration);
-        useAuthStore.setState({ isAuth: true });
-        setUserInfo(userInfo);
-      } catch (error) {
+  useEffect(() => {
+    // Синхронизация logout между вкладками
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'auth_logout') {
         inMemoryJWT.deleteToken();
-        useAuthStore.setState({ isAuth: false });
+        init(null);
       }
-    }
+    };
 
-    refreshAuth();
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
   }, []);
 
   return null;

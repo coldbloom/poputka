@@ -6,26 +6,53 @@
   top: variables.$header-height;
   display: flex;
   flex-direction: column;
-
   border-top: 1px solid variables.$color-disabled;
+}
 
-  .loginButton {
-    margin-top: 40px;
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    padding: 10px 20px;
+.tabsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0;
+}
 
-    span {
-      font-size: 18px;
-      font-weight: 400;
-    }
+/* ── Unauthorized state ── */
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0 8px;
+}
+
+.loginHint {
+  font-size: 13px;
+  color: variables.$text-secondary;
+  line-height: 1.5;
+  padding: 0 20px;
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  margin: 0 20px;
+  background: variables.$main-color;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(59, 148, 94, 0.3);
+  transition: filter 0.12s ease, transform 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    filter: brightness(1.07);
   }
 
-  .tabsWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 16px 0;
+  &:active {
+    transform: scale(0.975);
   }
 }

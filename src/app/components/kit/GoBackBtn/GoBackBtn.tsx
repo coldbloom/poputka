@@ -8,15 +8,15 @@ import { useRouter } from "next/navigation";
 import s from './GoBackBtn.module.scss';
 
 type GoBackBtnProps = {
-  onClick?: () => void;
+  onClickAction?: () => void;
   style?: CSSProperties;
 };
 
-export const GoBackBtn = ({ onClick, style }: GoBackBtnProps) => {
+export const GoBackBtn = ({ onClickAction, style }: GoBackBtnProps) => {
   const { back } = useRouter();
 
   return (
-    <div onClick={onClick || back} className={s.goBackWrapper} tabIndex={0} style={style}>
+    <div onClick={onClickAction || back} className={s.goBackWrapper} tabIndex={0} style={style}>
       <Icon path={mdiArrowLeftCircle} size="36px" />
     </div>
   );

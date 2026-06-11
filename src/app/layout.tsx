@@ -3,13 +3,13 @@ import { Roboto } from "next/font/google";
 import "./globals.scss";
 
 import { AuthStoreInitializer } from '@/components/shared/auth/AuthStoreInitializer';
+import { getSession } from '@/utils/services/auth.server';
 
 const roboto = Roboto({
-  weight: ['300', '400', '500', '700'], // Укажите нужные начертания
-  subsets: ["latin", "cyrillic"], // Добавьте нужные языковые подмножества
-  display: 'swap', // Для лучшей производительности
-  variable: "--font-roboto", // CSS переменная для использования
-  // Fallback-шрифты: Важно указать резервные шрифты на случай проблем с загрузкой Roboto
+  weight: ['300', '400', '500', '700'],
+  subsets: ["latin", "cyrillic"],
+  display: 'swap',
+  variable: "--font-roboto",
   fallback: ['-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
 });
 
@@ -21,24 +21,24 @@ export const metadata: Metadata = {
   description: 'Совместные поездки на авто по России - найти попутчиков быстро | Попутка',
 };
 
+/**
+ * Root layout — Server Component.
+ * Читает сессию на сервере (SSR) и передаёт её в клиентский AuthStoreInitializer.
+ * Страница отрендерится с данными пользователя без мигания и лишних запросов.
+ */
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const authData = await checkAuthOnServer();
-  // if (authData) {
-  //   inMemoryJWT.setToken(authData.accessToken, authData.accessTokenExpiration);
-  // }
-
-  // const cookieStore = await cookies();
-  // const refreshToken = cookieStore.get('refreshToken');
-  // console.log('refreshToken = ', refreshToken?.value);
+  // Один SSR-запрос, результат кешируется React cache() на время рендера
+  const user = await getSession();
 
   return (
     <html lang="ru">
       <body className={`${roboto.variable}`}>
-        <AuthStoreInitializer />
+        {/* initialUser передаётся с сервера — клиент сразу знает статус авторизации */}
+        <AuthStoreInitializer initialUser={user} />
         {children}
       </body>
     </html>

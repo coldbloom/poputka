@@ -1,52 +1,51 @@
 import { instanceAxios } from './apiClient';
 
-const inMemoryJWT = () => {
-  // Приватные переменные
-  let inMemoryJWT: string | null = null;
-  let refreshTimeoutId: string | number | NodeJS.Timeout | null | undefined = null;
+const LOGOUT_EVENT_KEY = 'auth_logout';
 
-  // Возвращает текущий JWT-токен из памяти.
-  // Если токен не установлен — вернет null.
-  const getToken = () => inMemoryJWT;
+const inMemoryJWT = (() => {
+  let token: string | null = null;
+  let refreshTimer: ReturnType<typeof setTimeout> | null = null;
 
-  // Сохраняет новый токен в памяти.
-  // Запускает отложенное обновление токена перед истечением срока.
-  const setToken = (token: string, tokenExpiration: number) => {
-    inMemoryJWT = token;
-    refreshToken(tokenExpiration);
-  };
+  const getToken = () => token;
 
-  const abortRefreshToken = () => {
-    if (refreshTimeoutId) {
-      clearInterval(refreshTimeoutId);
+  /**
+   * Сохраняет access-токен и запускает автоматическое обновление
+   * за 30 секунд до истечения.
+   */
+  const setToken = (newToken: string, expirationMs: number) => {
+    token = newToken;
+
+    if (refreshTimer) clearTimeout(refreshTimer);
+
+    const refreshIn = expirationMs - 30_000;
+    if (refreshIn > 0) {
+      refreshTimer = setTimeout(async () => {
+        try {
+          const res = await instanceAxios.post('/auth/refresh');
+          const { accessToken, accessExpirationMs } = res.data;
+          setToken(accessToken, accessExpirationMs);
+        } catch {
+          deleteToken();
+        }
+      }, refreshIn);
     }
-  }
-
-  // Метод, который удаляет токен, очищает таймер обновления и устанавливает значение в localStorage, чтобы другие вкладки могли отреагировать на выход пользователя.
-  const deleteToken = () => {
-    inMemoryJWT = null;
-    abortRefreshToken();
-
-    localStorage.setItem(process.env.REACT_APP_LOGOUT_STORAGE_KEY!, String(Date.now())); // для того чтобы осуществлялся выход на всех вкладках, указывает TypeScript; "!" гарантирует, что process.env.REACT_APP_LOGOUT_STORAGE_KEY точно существует и не является undefined
   };
 
-  // Механизм обновления токена
-  const refreshToken = (expiration: number) => {
-    const timeoutTrigger = expiration - 10000; // Обновляем за 10 сек до истечения
+  const deleteToken = () => {
+    token = null;
+    if (refreshTimer) {
+      clearTimeout(refreshTimer);
+      refreshTimer = null;
+    }
+    // Сигнализируем другим вкладкам о выходе
+    try {
+      localStorage.setItem(LOGOUT_EVENT_KEY, String(Date.now()));
+    } catch {
+      // localStorage может быть недоступен (SSR или private mode)
+    }
+  };
 
-    refreshTimeoutId = setTimeout(() => {
-      instanceAxios.post('/auth/refresh')
-        .then(res => {
-          const { accessToken, accessTokenExpiration } = res.data;
-          setToken(accessToken, accessTokenExpiration);
-        })
-        .catch(console.error)
-    }, timeoutTrigger);
-  }
-
-  // Публичные методы
   return { getToken, setToken, deleteToken };
-}
+})();
 
-export default inMemoryJWT();
-// экспортируем и сразу вызываем чтобы getToken и setToken были доступны через "." как методы у обхекта
+export default inMemoryJWT;
