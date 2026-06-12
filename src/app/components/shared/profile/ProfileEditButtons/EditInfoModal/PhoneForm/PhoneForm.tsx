@@ -4,11 +4,11 @@ import { mdiInformationOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useUserInfoStore } from "@/store/userInfoStore";
 import { authApiClient } from "@/utils/services/apiClient";
-import { formatPhone } from "@/utils/functions";
+import { formatPhone, formatPhoneNumber } from "@/utils/functions";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Input } from "@/components/kit/Input";
 import { Button } from "@/components/kit/Button";
-import {ChangeEvent, useEffect} from "react";
+import { ChangeEvent } from "react";
 import s from './PhoneForm.module.scss';
 
 type TForm = {
@@ -37,22 +37,7 @@ export const PhoneForm = ({ onCloseAction }: PhoneFormProps) => {
   const currentValues = watch();
 
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value.replace(/\D/g, '');
-    let formatted = '+7 ';
-
-    if (input.length > 1) {
-      formatted += input.substring(1, 4);
-    }
-    if (input.length > 4) {
-      formatted += ' ' + input.substring(4, 7);
-    }
-    if (input.length > 7) {
-      formatted += ' ' + input.substring(7, 9);
-    }
-    if (input.length > 9) {
-      formatted += ' ' + input.substring(9, 11);
-    }
-
+    const formatted = formatPhoneNumber(e.target.value);
     setValue('phone', formatted, { shouldValidate: true });
   };
 
@@ -74,17 +59,12 @@ export const PhoneForm = ({ onCloseAction }: PhoneFormProps) => {
     }
   };
 
-  useEffect(() => {
-    console.log(errors.phone?.message);
-  }, [errors]);
-
   return (
     <>
       <h1 className="profile-heading">Введите номер телефона</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="tel"
-          // Добавляем маску через inputmode
           inputMode="numeric"
           placeholder="+7 *** *** ** **"
           errorText={errors.phone?.message}

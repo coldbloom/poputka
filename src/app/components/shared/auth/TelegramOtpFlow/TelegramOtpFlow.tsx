@@ -7,6 +7,7 @@ import Icon from '@mdi/react';
 import { OtpInput } from '../OtpInput/OtpInput';
 import s from './TelegramOtpFlow.module.scss';
 import cn from 'classnames';
+import {PhoneForm} from "@/components/shared/auth/TelegramOtpFlow/PhoneForm";
 
 type Step = 'phone' | 'otp' | 'name';
 
@@ -173,40 +174,77 @@ export const TelegramOtpFlow = ({ onBack }: TelegramOtpFlowProps) => {
       </button>
 
       {step === 'phone' && (
-        <div className={s.stepContent}>
-          <div className={s.stepIcon}>
-            <Icon path={mdiPhone} size="28px" />
-          </div>
-          <h2 className={s.stepTitle}>Введите номер телефона</h2>
-          <p className={s.stepDesc}>
-            Мы отправим 4-значный код в ваш Telegram-бот
-          </p>
-          <div className={cn(s.inputWrap, { [s.inputError]: !!error })}>
-            <input
-              ref={phoneRef}
-              type="tel"
-              className={s.phoneInput}
-              value={phone}
-              onChange={(e) => {
-                setPhone(formatPhone(e.target.value));
-                setError('');
-              }}
-              onKeyDown={(e) => e.key === 'Enter' && sendOtp()}
-              placeholder="+7 (___) ___-__-__"
-              disabled={loading}
-              autoComplete="tel"
-            />
-          </div>
-          {error && <p className={s.errorText}>{error}</p>}
-          <button
-            className={s.submitBtn}
-            onClick={sendOtp}
-            disabled={loading}
-            type="button"
-          >
-            {loading ? <Icon path={mdiLoading} size="20px" className={s.spin} /> : 'Продолжить'}
-          </button>
-        </div>
+        <>
+          {/*<div className={s.stepContent}>*/}
+          {/*  <div className={s.stepIcon}>*/}
+          {/*    <Icon path={mdiPhone} size="28px" />*/}
+          {/*  </div>*/}
+          {/*  <h2 className={s.stepTitle}>Введите номер телефона</h2>*/}
+          {/*  <p className={s.stepDesc}>*/}
+          {/*    Мы отправим 4-значный код в ваш Telegram-бот*/}
+          {/*  </p>*/}
+          {/*  <div className={cn(s.inputWrap, { [s.inputError]: !!error })}>*/}
+          {/*    <input*/}
+          {/*      ref={phoneRef}*/}
+          {/*      type="tel"*/}
+          {/*      className={s.phoneInput}*/}
+          {/*      value={phone}*/}
+          {/*      onChange={(e) => {*/}
+          {/*        setPhone(formatPhone(e.target.value));*/}
+          {/*        setError('');*/}
+          {/*      }}*/}
+          {/*      onKeyDown={(e) => e.key === 'Enter' && sendOtp()}*/}
+          {/*      placeholder="+7 (___) ___-__-__"*/}
+          {/*      disabled={loading}*/}
+          {/*      autoComplete="tel"*/}
+          {/*    />*/}
+          {/*  </div>*/}
+          {/*  {error && <p className={s.errorText}>{error}</p>}*/}
+          {/*  <button*/}
+          {/*    className={s.submitBtn}*/}
+          {/*    onClick={sendOtp}*/}
+          {/*    disabled={loading}*/}
+          {/*    type="button"*/}
+          {/*  >*/}
+          {/*    {loading ? <Icon path={mdiLoading} size="20px" className={s.spin} /> : 'Продолжить'}*/}
+          {/*  </button>*/}
+          {/*</div>*/}
+          <PhoneForm />
+        </>
+        // <div className={s.stepContent}>
+        //   <div className={s.stepIcon}>
+        //     <Icon path={mdiPhone} size="28px" />
+        //   </div>
+        //   <h2 className={s.stepTitle}>Введите номер телефона</h2>
+        //   <p className={s.stepDesc}>
+        //     Мы отправим 4-значный код в ваш Telegram-бот
+        //   </p>
+        //   <div className={cn(s.inputWrap, { [s.inputError]: !!error })}>
+        //     <input
+        //       ref={phoneRef}
+        //       type="tel"
+        //       className={s.phoneInput}
+        //       value={phone}
+        //       onChange={(e) => {
+        //         setPhone(formatPhone(e.target.value));
+        //         setError('');
+        //       }}
+        //       onKeyDown={(e) => e.key === 'Enter' && sendOtp()}
+        //       placeholder="+7 (___) ___-__-__"
+        //       disabled={loading}
+        //       autoComplete="tel"
+        //     />
+        //   </div>
+        //   {error && <p className={s.errorText}>{error}</p>}
+        //   <button
+        //     className={s.submitBtn}
+        //     onClick={sendOtp}
+        //     disabled={loading}
+        //     type="button"
+        //   >
+        //     {loading ? <Icon path={mdiLoading} size="20px" className={s.spin} /> : 'Продолжить'}
+        //   </button>
+        // </div>
       )}
 
       {step === 'otp' && (

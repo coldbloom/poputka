@@ -112,7 +112,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({
           </div>
         )}
       </div>
-      {errorText && <span className={s.errorMessage}>{errorText}</span>}
+      {!isFocused && errorText && <span className={s.errorMessage}>{errorText}</span>}
     </div>
   );
 });

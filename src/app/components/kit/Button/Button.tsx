@@ -55,9 +55,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Общие классы для кнопки
     const buttonClasses = cn(
       s.button,
-      className,
       s[`variant-${variant}`],
-      {[s.disabled]: disabled, [s.error]: error, [s.active]: active}
+      {[s.disabled]: disabled, [s.error]: error, [s.active]: active},
+      className,
     );
 
     // Компонент сообщения об ошибке

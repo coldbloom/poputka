@@ -26,9 +26,13 @@
 }
 
 .wrapper {
+  position: relative;
   margin-bottom: 20px;
 
   .errorMessage {
+    position: absolute;
+    top: 52px;
+    left: 0;
     display: inline-block;
     font-size: 12px;
     line-height: 1.2;
@@ -41,20 +45,29 @@
   position: relative;
   width: 100%;
   outline: none;
-  border: 1px solid #d1d4dc;
-  background-color: white;
-  //border: 1px solid variables.$text-secondary;
+  border: 2px solid #e0e6ea;
   border-radius: variables.$rounded;
   display: flex;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 
-  &:focus-within {
-    outline: 2px solid variables.$main-color; // Изменяем границу при фокусе на вложенном input
-    border: 1px solid transparent;
+  &.secondary {
+    background-color: #f5f7f8;
   }
 
   &.error {
-    outline: 2px solid variables.$error-color;
-    border: 1px solid transparent;
+    //outline: 2px solid variables.$error-color;
+    //border: 1px solid transparent;
+    border-color: variables.$error-color;
+  }
+
+  &:focus-within {
+    border-color: variables.$color-theme-two;
+    box-shadow: 0 0 0 4px rgba(101, 204, 184, 0.15);
+    //outline: 2px solid variables.$main-color; // Изменяем границу при фокусе на вложенном input
+    //border: 1px solid transparent;
+    &.secondary {
+      background-color: white;
+    }
   }
 
   input {
@@ -65,8 +78,8 @@
     outline: none;
     border: none;
     border-radius: variables.$rounded;
+    background-color: transparent;
     box-sizing: border-box;
-    background-color: white;
     color: black;
 
     &::placeholder {
@@ -98,7 +111,7 @@
     }
 
     &.focus {
-      color: variables.$main-color;
+      color: variables.$color-theme-two;
     }
   }
 

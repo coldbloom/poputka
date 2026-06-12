@@ -9,6 +9,43 @@ export function formatPhone(phone: string | null | undefined): string | null | u
   }
 }
 
+/**
+ * Форматирует строку с номером телефона в российский формат +7 XXX XXX XX XX
+ *
+ * @param phone - Входная строка с номером телефона (может содержать любые символы)
+ * @returns Отформатированный номер телефона в формате "+7 XXX XXX XX XX"
+ *
+ * @TODO используется в связке с компонентой Input из kit
+ *
+ * @example
+ * formatPhoneNumber('89123456789') // returns '+7 912 345 67 89'
+ * @example
+ * formatPhoneNumber('+7 (912) 345-67-89') // returns '+7 912 345 67 89'
+ * @example
+ * formatPhoneNumber('912') // returns '+7 912'
+ * @example
+ * formatPhoneNumber('') // returns '+7 '
+ */
+export function formatPhoneNumber(phone: string): string {
+  const input = phone.replace(/\D/g, '');
+  let formatted = '+7 ';
+
+  if (input.length > 1) {
+    formatted += input.substring(1, 4);
+  }
+  if (input.length > 4) {
+    formatted += ' ' + input.substring(4, 7);
+  }
+  if (input.length > 7) {
+    formatted += ' ' + input.substring(7, 9);
+  }
+  if (input.length > 9) {
+    formatted += ' ' + input.substring(9, 11);
+  }
+
+  return formatted;
+}
+
 export function secondsToHoursMinutes(seconds: number): string {
   // Вычисляем часы
   const hours = Math.floor(seconds / 3600);
